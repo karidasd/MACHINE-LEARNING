@@ -1,1 +1,95 @@
-
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 📊 Μάθημα 1: Εισαγωγή στην Ανάλυση Δεδομένων\n",
+    "Καλώς ήρθατε! Σε αυτό το πρώτο εργαστήριο, θα μάθουμε πώς να χρησιμοποιούμε την βιβλιοθήκη **Pandas** για να αναλύουμε δεδομένα.\n",
+    "\n",
+    "### Τι θα κάνουμε σήμερα:\n",
+    "1. Δημιουργία ενός πίνακα δεδομένων (DataFrame).\n",
+    "2. Υπολογισμός βασικών στατιστικών.\n",
+    "3. Δημιουργία του πρώτου μας γραφήματος."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "# 1. Φτιάχνουμε τα δεδομένα μας\n",
+    "data = {\n",
+    "    'Μαθητής': ['Γιάννης', 'Μαρία', 'Ελένη', 'Κώστας', 'Άννα'],\n",
+    "    'Βαθμός': [14, 19, 17, 12, 20],\n",
+    "    'Ώρες_Διαβάσματος': [2, 8, 5, 3, 10]\n",
+    "}\n",
+    "\n",
+    "df = pd.DataFrame(data)\n",
+    "print(\"--- Ο Πίνακας των Μαθητών ---\")\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 📈 Στατιστική Ανάλυση\n",
+    "Ας δούμε ποιος είναι ο μέσος όρος βαθμολογίας της τάξης."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "mesos_oros = df['Βαθμός'].mean()\n",
+    "print(f\"Ο μέσος όρος της τάξης είναι: {mesos_oros}\")\n",
+    "\n",
+    "# Εύρεση του καλύτερου μαθητή\n",
+    "best_student = df[df['Βαθμός'] == df['Βαθμός'].max()]\n",
+    "print(f\"Ο/Η καλύτερος/η μαθητής/τρια είναι: \\n{best_student}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 🖼️ Οπτικοποίηση\n",
+    "Δείτε τη σχέση ανάμεσα στις ώρες διαβάσματος και τον βαθμό."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plt.figure(figsize=(8,5))\n",
+    "plt.scatter(df['Ώρες_Διαβάσματος'], df['Βαθμός'], color='red')\n",
+    "plt.title('Σχέση Διαβάσματος - Βαθμολογίας')\n",
+    "plt.xlabel('Ώρες Διαβάσματος')\n",
+    "plt.ylabel('Βαθμός')\n",
+    "plt.grid(True)\n",
+    "plt.show()"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
